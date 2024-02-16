@@ -12,7 +12,7 @@ for filename in glob.glob("*.stl"):
     # skip if it starts with simpler_
     if filename.startswith('simpler_'):
         continue
-    ms.apply_filter('convex_hull')
+    ms.apply_filter('generate_convex_hull')
     ms.save_current_mesh('simpler_'+filename)
     print(filename + ' simplified and saved as simpler_'+ filename)
 print('*'*20)

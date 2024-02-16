@@ -6,13 +6,22 @@
     <xacro:include filename="$(find mulinex_description)/urdf/material.xacro" />
    
     <xacro:arg name="use_gazebo" default="true" />
-    <xacro:arg name="simplify_meshes_lower_leg" default="true"/>
-    <xacro:arg name="add_wheels" default="false"/>
+
+    <xacro:arg name="simplify_meshes_lower_leg" default="false"/>
+
+    <!-- use "normal" if normal feet are used
+        use "omni" if omniwheels are used
+        use "goat" if goat feet are used 
+        use "track" if track feet are used -->
+    <xacro:arg name="feet_type" default="goat"/> 
+
+
     <xacro:arg name="jnt_prefix" default="" />
+    <xacro:arg name="front_haa" default="0.0" />
     <xacro:arg name="hind_haa" default="0.0" />
+
     <xacro:arg name="RH_HFE" default="0.0" />
     <xacro:arg name="RH_KFE" default="0.0" />
-    <xacro:arg name="front_haa" default="0.0" />
     <xacro:arg name="RF_HFE" default="0.0" />
     <xacro:arg name="RF_KFE" default="0.0" />
 
@@ -50,35 +59,42 @@
         gazebo="$(arg use_gazebo)"
         jnt_pref="$(arg jnt_prefix)"
         simplify_meshes="$(arg simplify_meshes_lower_leg)" 
-        wheels="$(arg add_wheels)" />
+        feet_type="$(arg feet_type)" 
+        />
+
     <xacro:leg
         prefix="LF"
         gazebo="$(arg use_gazebo)"
         jnt_pref="$(arg jnt_prefix)"
         simplify_meshes="$(arg simplify_meshes_lower_leg)"
-        wheels="$(arg add_wheels)" />
+        feet_type="$(arg feet_type)" 
+        />
+
     <xacro:leg
         prefix="RF"
         gazebo="$(arg use_gazebo)"
         jnt_pref="$(arg jnt_prefix)"
         simplify_meshes="$(arg simplify_meshes_lower_leg)"
-        wheels="$(arg add_wheels)" />
+        feet_type="$(arg feet_type)"
+        />
+
     <xacro:leg
         prefix="RH"
         gazebo="$(arg use_gazebo)"
         jnt_pref="$(arg jnt_prefix)"
         simplify_meshes="$(arg simplify_meshes_lower_leg)"
-        wheels="$(arg add_wheels)" />
+        feet_type="$(arg feet_type)" 
+        />
 
     <xacro:if value="$(arg use_gazebo)">
         <gazebo reference="base_link">
             <material>Gazebo/White</material>
         </gazebo>
-        <gazebo>
+        <!-- <gazebo>
             <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
                 <parameters>$(find mulinex_gazebo)/config/mulinex_gazebo_sim_jnt_PD_IMU.yaml</parameters>
             </plugin>
-        </gazebo>
+        </gazebo> -->
 
         <ros2_control name="GazeboSystem" type="system">
             <hardware>
@@ -251,39 +267,17 @@
                     </z>
                 </linear_acceleration>
                 </imu>
-                <plugin name="bytes_imu" filename="libgazebo_ros_imu_sensor.so">
+
+                <!-- <plugin name="bytes_imu" filename="libgazebo_ros_imu_sensor.so">
                     <ros>
                         <namespace>imu</namespace>
                         <remapping>~/out:=data</remapping>
                     </ros>
                     <initial_orientation_as_reference>false</initial_orientation_as_reference>
-                </plugin>
+                </plugin> -->
+
             </sensor>
         </gazebo>
 
     </xacro:if>
-    <xacro:unless value="$(arg use_gazebo)">
-        <!-- <ros2_control name="SOLO12_WB_Interface" type="system">
-            <hardware>
-                <plugin>solo12_interface/SOLO12_WB_Interface</plugin>
-                <param name="timeout">100</param>
-                <param name="command_type">0</param>
-                <param name="Kp_F">0.0</param>
-                <param name="Kv_F">0.0</param>
-                <param name="Kp_H">0.0</param>
-                <param name="Kv_H">0.0</param>
-                <param name="I_saturation">12.0</param>
-            </hardware>
-        </ros2_control> -->
-        <!--<ros2_control name="SOLO12_Leg_Interface" type="system">
-            <hardware>
-                <plugin>solo12_interface/SOLO12_Leg_Interface</plugin>
-                <param name="timeout" >100</param>
-                <param name="command_type" >0</param>
-                <param name="Kp" >10.0</param>
-                <param name="Kv" >0.5</param>
-                <param name="I_saturation" >10.0</param>
-            </hardware>
-        </ros2_control>-->
-    </xacro:unless>
 </robot>
