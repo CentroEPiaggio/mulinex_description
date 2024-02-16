@@ -61,6 +61,7 @@
         simplify_meshes="$(arg simplify_meshes_lower_leg)" 
         feet_type="$(arg feet_type)" 
         />
+
     <xacro:leg
         prefix="LF"
         gazebo="$(arg use_gazebo)"
@@ -68,6 +69,7 @@
         simplify_meshes="$(arg simplify_meshes_lower_leg)"
         feet_type="$(arg feet_type)" 
         />
+
     <xacro:leg
         prefix="RF"
         gazebo="$(arg use_gazebo)"
@@ -75,6 +77,7 @@
         simplify_meshes="$(arg simplify_meshes_lower_leg)"
         feet_type="$(arg feet_type)"
         />
+
     <xacro:leg
         prefix="RH"
         gazebo="$(arg use_gazebo)"
@@ -264,6 +267,7 @@
                     </z>
                 </linear_acceleration>
                 </imu>
+
                 <!-- <plugin name="bytes_imu" filename="libgazebo_ros_imu_sensor.so">
                     <ros>
                         <namespace>imu</namespace>
@@ -271,6 +275,7 @@
                     </ros>
                     <initial_orientation_as_reference>false</initial_orientation_as_reference>
                 </plugin> -->
+
             </sensor>
         </gazebo>
 
