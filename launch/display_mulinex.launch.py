@@ -14,7 +14,7 @@ def generate_launch_description():
 
     #path for build mulinex12 urdf
     mulinex_robot_path = get_package_share_path("mulinex_description")
-    mulinex_robot_path = os.path.join(mulinex_robot_path,"urdf", "mulinex.xacro") 
+    mulinex_robot_path = os.path.join(mulinex_robot_path,"urdf", "omnicar.xacro") 
     # #path for rviz settings
     rviz_config_path = get_package_share_path("mulinex_description")
     rviz_config_path = os.path.join(rviz_config_path, "rviz", "config.rviz")
