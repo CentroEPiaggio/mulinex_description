@@ -19,7 +19,7 @@
 
     
     <xacro:macro name="wheel" params="prefix gazebo">
-        <joint name="${prefix}_ANKLE" type="continuous">
+        <joint name="${prefix}_WHEEL_" type="continuous">
                 <parent link="${prefix}_SHOULDER" />
                 <child link="${prefix}_WHEEL" />
                 <xacro:if value="${prefix == 'LF'}">
@@ -298,7 +298,7 @@
                         </surface>
                     </collision>
 
-                    <sensor name="${prefix}_contactsensor_sensor" type="contact">
+                    <!-- <sensor name="${prefix}_contactsensor_sensor" type="contact">
                         <always_on>true</always_on>
                         <update_rate>50</update_rate>
                         <contact>
@@ -306,7 +306,7 @@
                                 ${prefix}_LOWER_LEG_fixed_joint_lump__${prefix}_FOOT_collision_1</collision>
                         </contact>
 
-                    </sensor>
+                    </sensor> -->
                 </gazebo>
             </xacro:if>
 
@@ -482,7 +482,7 @@
                             </contact>
                         </surface>
                     </collision>
-                    <sensor name="${prefix}_contactsensor_sensor" type="contact">
+                    <!-- <sensor name="${prefix}_contactsensor_sensor" type="contact">
                         <always_on>true</always_on>
                         <update_rate>50</update_rate>
                         <contact>
@@ -490,7 +490,7 @@
                                 ${prefix}_LOWER_LEG_fixed_joint_lump__${prefix}_FOOT_collision_1</collision>
                         </contact>
 
-                    </sensor>
+                    </sensor> -->
                 </gazebo>
             </xacro:if>
 
@@ -666,7 +666,7 @@
                             </contact>
                         </surface>
                     </collision>
-                    <sensor name="${prefix}_contactsensor_sensor" type="contact">
+                    <!-- <sensor name="${prefix}_contactsensor_sensor" type="contact">
                         <always_on>true</always_on>
                         <update_rate>50</update_rate>
                         <contact>
@@ -674,7 +674,7 @@
                                 ${prefix}_LOWER_LEG_fixed_joint_lump__${prefix}_FOOT_collision_1</collision>
                         </contact>
 
-                    </sensor>
+                    </sensor> -->
                 </gazebo>
             </xacro:if>
 
@@ -850,7 +850,7 @@
                             </contact>
                         </surface>
                     </collision>
-                    <sensor name="${prefix}_contactsensor_sensor" type="contact">
+                    <!-- <sensor name="${prefix}_contactsensor_sensor" type="contact">
                         <always_on>true</always_on>
                         <update_rate>50</update_rate>
                         <contact>
@@ -858,7 +858,7 @@
                                 ${prefix}_LOWER_LEG_fixed_joint_lump__${prefix}_FOOT_collision_1</collision>
                         </contact>
 
-                    </sensor>
+                    </sensor> -->
                 </gazebo>
             </xacro:if>
 
@@ -1035,7 +1035,7 @@
                             </contact>
                         </surface>
                     </collision>
-                    <sensor name="${prefix}_contactsensor_sensor" type="contact">
+                    <!-- <sensor name="${prefix}_contactsensor_sensor" type="contact">
                         <always_on>true</always_on>
                         <update_rate>50</update_rate>
                         <contact>
@@ -1043,7 +1043,7 @@
                                 ${prefix}_LOWER_LEG_fixed_joint_lump__${prefix}_FOOT_collision_1</collision>
                         </contact>
 
-                    </sensor>
+                    </sensor> -->
                 </gazebo>
             </xacro:if>
 
@@ -1220,7 +1220,7 @@
                             </contact>
                         </surface>
                     </collision>
-                    <sensor name="${prefix}_contactsensor_sensor" type="contact">
+                    <!-- <sensor name="${prefix}_contactsensor_sensor" type="contact">
                         <always_on>true</always_on>
                         <update_rate>50</update_rate>
                         <contact>
@@ -1228,7 +1228,7 @@
                                 ${prefix}_LOWER_LEG_fixed_joint_lump__${prefix}_FOOT_collision_1</collision>
                         </contact>
 
-                    </sensor>
+                    </sensor> -->
                 </gazebo>
             </xacro:if>
 
@@ -1405,7 +1405,7 @@
                             </contact>
                         </surface>
                     </collision>
-                    <sensor name="${prefix}_contactsensor_sensor" type="contact">
+                    <!-- <sensor name="${prefix}_contactsensor_sensor" type="contact">
                         <always_on>true</always_on>
                         <update_rate>50</update_rate>
                         <contact>
@@ -1413,7 +1413,7 @@
                                 ${prefix}_LOWER_LEG_fixed_joint_lump__${prefix}_FOOT_collision_1</collision>
                         </contact>
 
-                    </sensor>
+                    </sensor> -->
                 </gazebo>
             </xacro:if>
 
@@ -1590,7 +1590,7 @@
                             </contact>
                         </surface>
                     </collision>
-                    <sensor name="${prefix}_contactsensor_sensor" type="contact">
+                    <!-- <sensor name="${prefix}_contactsensor_sensor" type="contact">
                         <always_on>true</always_on>
                         <update_rate>50</update_rate>
                         <contact>
@@ -1598,7 +1598,7 @@
                                 ${prefix}_LOWER_LEG_fixed_joint_lump__${prefix}_FOOT_collision_1</collision>
                         </contact>
 
-                    </sensor>
+                    </sensor> -->
                 </gazebo>
             </xacro:if>
 
@@ -1775,7 +1775,7 @@
                             </contact>
                         </surface>
                     </collision>
-                    <sensor name="${prefix}_contactsensor_sensor" type="contact">
+                    <!-- <sensor name="${prefix}_contactsensor_sensor" type="contact">
                         <always_on>true</always_on>
                         <update_rate>50</update_rate>
                         <contact>
@@ -1783,7 +1783,7 @@
                                 ${prefix}_LOWER_LEG_fixed_joint_lump__${prefix}_FOOT_collision_1</collision>
                         </contact>
 
-                    </sensor>
+                    </sensor> -->
                 </gazebo>
             </xacro:if>
 
@@ -1959,7 +1959,7 @@
                             </contact>
                         </surface>
                     </collision>
-                    <sensor name="${prefix}_contactsensor_sensor" type="contact">
+                    <!-- <sensor name="${prefix}_contactsensor_sensor" type="contact">
                         <always_on>true</always_on>
                         <update_rate>50</update_rate>
                         <contact>
@@ -1967,7 +1967,7 @@
                                 ${prefix}_LOWER_LEG_fixed_joint_lump__${prefix}_FOOT_collision_1</collision>
                         </contact>
 
-                    </sensor>
+                    </sensor> -->
                 </gazebo>
             </xacro:if>
 
