@@ -19,7 +19,7 @@
 
     
     <xacro:macro name="wheel" params="prefix gazebo">
-        <joint name="${prefix}_WHEEL_" type="continuous">
+        <joint name="${prefix}_WHEEL_JNT" type="continuous">
                 <parent link="${prefix}_SHOULDER" />
                 <child link="${prefix}_WHEEL" />
                 <xacro:if value="${prefix == 'LF'}">
