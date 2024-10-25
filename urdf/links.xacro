@@ -324,7 +324,7 @@
             <child link="${jnt_pref}${prefix}_UPPER_LEG" />
             <origin xyz="${hip_to_upper_leg_xyz}" rpy="${hip_to_upper_leg_rpy}" />
             <axis xyz="${axis}" />
-            <limit effort="5.0" lower="-${PI}" upper="${PI}" velocity="1000" />
+            <limit effort="5.0" lower="-${2*PI}" upper="${2*PI}" velocity="1000" />
             <!-- <dynamics damping="0.7" friction="100.0" /> -->
         </joint>
         <!-- Upper leg link -->
@@ -511,7 +511,7 @@
                 <child link="${jnt_pref}${prefix}_LOWER_LEG" />
                 <origin xyz="${upper_to_lower_leg_xyz}" rpy="${upper_to_lower_leg_rpy}" />
                 <axis xyz="${axis}" />
-                <limit effort="5.0" lower="-${PI}" upper="${PI}" velocity="1000" />
+                <limit effort="5.0" lower="-${2*PI}" upper="${2*PI}" velocity="1000" />
                 <!-- <dynamics damping="0.7" friction="100.0" /> -->
             </joint>
             <!-- Lower leg link -->
@@ -780,7 +780,7 @@
                 <child link="${jnt_pref}${prefix}_LOWER_LEG" />
                 <origin xyz="${upper_to_lower_leg_xyz}" rpy="${upper_to_lower_leg_rpy}" />
                 <axis xyz="${axis}" />
-                <limit effort="5.0" lower="-${PI}" upper="${PI}" velocity="1000" />
+                <limit effort="5.0" lower="-${2*PI}" upper="${2*PI}" velocity="1000" />
                 <!-- <dynamics damping="0.7" friction="100.0" /> -->
             </joint>
             <!-- Lower leg link -->
@@ -946,7 +946,7 @@
             </xacro:if>
 
             <!-- Omniwheels -->
-            <joint name="${prefix}_ANKLE" type="continuous">
+            <joint name="${prefix}_WHEEL_JNT" type="continuous">
                 <parent link="${prefix}_LOWER_LEG" />
                 <child link="${prefix}_WHEEL" />
                 <xacro:if value="${prefix == 'LF'}">
@@ -3154,7 +3154,7 @@
                 <child link="${jnt_pref}${prefix}_LOWER_LEG" />
                 <origin xyz="${upper_to_lower_leg_xyz}" rpy="${upper_to_lower_leg_rpy}" />
                 <axis xyz="${axis}" />
-                <limit effort="5.0" lower="-${PI}" upper="${PI}" velocity="1000" />
+                <limit effort="5.0" lower="-${2*PI}" upper="${2*PI}" velocity="1000" />
                 <!-- <dynamics damping="0.7" friction="100.0" /> -->
             </joint>
             <!-- Lower leg link -->
@@ -3600,7 +3600,7 @@
                 <child link="${jnt_pref}${prefix}_LOWER_LEG" />
                 <origin xyz="${upper_to_lower_leg_xyz}" rpy="${upper_to_lower_leg_rpy}" />
                 <axis xyz="${axis}" />
-                <limit effort="5.0" lower="-${PI}" upper="${PI}" velocity="1000" />
+                <limit effort="5.0" lower="-${2*PI}" upper="${2*PI}" velocity="1000" />
                 <!-- <dynamics damping="0.7" friction="100.0" /> -->
             </joint>
             <!-- Lower leg link -->
@@ -3770,7 +3770,7 @@
             </xacro:if>
 
             <!-- Track wheels -->
-            <joint name="${prefix}_ANKLE" type="continuous">
+            <joint name="${prefix}_WHEEL_JNT" type="continuous">
                 <parent link="${prefix}_LOWER_LEG" />
                 <child link="${prefix}_WHEEL_1" />
                 <xacro:if value="${prefix == 'LF'}">

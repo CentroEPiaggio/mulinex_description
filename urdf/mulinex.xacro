@@ -88,16 +88,16 @@
             <material>Gazebo/White</material>
         </gazebo>
         <gazebo>
-            <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
-                <parameters>$(find mulinex_gazebo)/config/mulinex_gazebo_sim_jnt_PD_IMU.yaml</parameters>
+            <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+                <parameters>$(find mulinex_ignition)/config/mulinex_mf.yaml</parameters>
             </plugin>
         </gazebo>
 
         <ros2_control name="GazeboSystem" type="system">
             <hardware>
-                <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+                <plugin>gz_ros2_control/GazeboSimSystem</plugin>
             </hardware>
-            <joint name="LH_HAA">
+            <!-- <joint name="LH_HAA">
                 <command_interface name="effort" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg hind_haa)</param>
@@ -106,9 +106,10 @@
                     <param name="initial_value">0.0</param>
                 </state_interface>
                 <state_interface name="effort" />
-            </joint>
+            </joint> -->
             <joint name="LH_HFE">
-                <command_interface name="effort" />
+                <command_interface name="position" />
+                
                 <state_interface name="position">
                     <param name="initial_value">$(arg LH_HFE)</param>
                 </state_interface>
@@ -118,7 +119,7 @@
                 <state_interface name="effort" />
             </joint>
             <joint name="LH_KFE">
-                <command_interface name="effort" />
+                <command_interface name="position" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg LH_KFE)</param>
                 </state_interface>
@@ -127,7 +128,7 @@
                 </state_interface>
                 <state_interface name="effort" />
             </joint>
-            <joint name="LF_HAA">
+            <!-- <joint name="LF_HAA">
                 <command_interface name="effort" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg front_haa)</param>
@@ -136,9 +137,9 @@
                     <param name="initial_value">0.0</param>
                 </state_interface>
                 <state_interface name="effort" />
-            </joint>
+            </joint> -->
             <joint name="LF_HFE">
-                <command_interface name="effort" />
+                <command_interface name="position" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg LF_HFE)</param>
                 </state_interface>
@@ -148,7 +149,7 @@
                 <state_interface name="effort" />
             </joint>
             <joint name="LF_KFE">
-                <command_interface name="effort" />
+                <command_interface name="position" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg LF_KFE)</param>
                 </state_interface>
@@ -157,7 +158,7 @@
                 </state_interface>
                 <state_interface name="effort" />
             </joint>
-            <joint name="RH_HAA">
+            <!-- <joint name="RH_HAA">
                 <command_interface name="effort" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg hind_haa)</param>
@@ -166,9 +167,9 @@
                     <param name="initial_value">0.0</param>
                 </state_interface>
                 <state_interface name="effort" />
-            </joint>
+            </joint> -->
             <joint name="RH_HFE">
-                <command_interface name="effort" />
+                <command_interface name="position" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg RH_HFE)</param>
                 </state_interface>
@@ -178,7 +179,7 @@
                 <state_interface name="effort" />
             </joint>
             <joint name="RH_KFE">
-                <command_interface name="effort" />
+                <command_interface name="position" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg RH_KFE)</param>
                 </state_interface>
@@ -187,7 +188,7 @@
                 </state_interface>
                 <state_interface name="effort" />
             </joint>
-            <joint name="RF_HAA">
+            <!-- <joint name="RF_HAA">
                 <command_interface name="effort" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg front_haa)</param>
@@ -196,9 +197,9 @@
                     <param name="initial_value">0.0</param>
                 </state_interface>
                 <state_interface name="effort" />
-            </joint>
+            </joint> -->
             <joint name="RF_HFE">
-                <command_interface name="effort" />
+                <command_interface name="position" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg RF_HFE)</param>
                 </state_interface>
@@ -208,7 +209,7 @@
                 <state_interface name="effort" />
             </joint>
             <joint name="RF_KFE">
-                <command_interface name="effort" />
+                <command_interface name="position" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg RF_KFE)</param>
                 </state_interface>
@@ -217,8 +218,49 @@
                 </state_interface>
                 <state_interface name="effort" />
             </joint>
+             <joint name="RF_WHEEL_JNT">
+                <command_interface name="velocity" />
+                <state_interface name="position">
+                    <param name="initial_value">0.0</param>
+                </state_interface>
+                <state_interface name="velocity">
+                    <param name="initial_value">0.0</param>
+                </state_interface>
+                <state_interface name="effort" />
+            </joint>
+             <joint name="RH_WHEEL_JNT">
+                <command_interface name="velocity" />
+                <state_interface name="position">
+                    <param name="initial_value">0.0</param>
+                </state_interface>
+                <state_interface name="velocity">
+                    <param name="initial_value">0.0</param>
+                </state_interface>
+                <state_interface name="effort" />
+            </joint>
+            <joint name="LF_WHEEL_JNT">
+                <command_interface name="velocity" />
+                <state_interface name="position">
+                    <param name="initial_value">0.0</param>
+                </state_interface>
+                <state_interface name="velocity">
+                    <param name="initial_value">0.0</param>
+                </state_interface>
+                <state_interface name="effort" />
+            </joint>
+            <joint name="LH_WHEEL_JNT">
+                <command_interface name="velocity" />
+                <state_interface name="position">
+                    <param name="initial_value">0.0</param>
+                </state_interface>
+                <state_interface name="velocity">
+                    <param name="initial_value">0.0</param>
+                </state_interface>
+                <state_interface name="effort" />
+            </joint>
+          
         </ros2_control>
-        <gazebo reference="base_link">
+        <!-- <gazebo reference="base_link">
             <sensor name="br_imu" type="imu">
                 <always_on>true</always_on>
                 <update_rate>100</update_rate>
@@ -264,15 +306,15 @@
                     </z>
                 </linear_acceleration>
                 </imu>
-                <!-- <plugin name="bytes_imu" filename="libgazebo_ros_imu_sensor.so">
+                <plugin name="bytes_imu" filename="libgazebo_ros_imu_sensor.so">
                     <ros>
                         <namespace>imu</namespace>
                         <remapping>~/out:=data</remapping>
                     </ros>
                     <initial_orientation_as_reference>false</initial_orientation_as_reference>
-                </plugin> -->
+                </plugin> 
             </sensor>
-        </gazebo>
+        </gazebo> -->
 
     </xacro:if>
 </robot>
