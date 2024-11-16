@@ -29,8 +29,7 @@
     <xacro:property name="PI" value="3.141592" />
 
     <!-- MULINEX VISUALIZATION meshes -->
-    <xacro:property name="mulinex_base"
-        value="file://$(find mulinex_description)/meshes//Body.stl" />
+    
     <xacro:property name="mulinex_module_left_front"
         value="file://$(find mulinex_description)/meshes//Module_left_front.stl" />
     <xacro:property name="mulinex_module_left_hind"

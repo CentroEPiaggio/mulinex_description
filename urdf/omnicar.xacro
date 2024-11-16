@@ -2,38 +2,28 @@
 <robot name="mulinex" xmlns:xacro="http://ros.org/wiki/xacro">
 
     <xacro:include filename="$(find mulinex_description)/urdf/omni_car_module.xacro" />
-    
-    <!-- <xacro:include filename="$(find mulinex_description)/urdf/material.xacro" /> -->
-    <xacro:include filename="$(find mulinex_description)/urdf/omnicar_gazebo.xacro" />
+    <xacro:property name="mulinex_base" value="file://$(find mulinex_description)/meshes//Body.stl" />
+    <xacro:include filename="$(find mulinex_description)/urdf/material.xacro" />
     <xacro:include filename="$(find mulinex_description)/urdf/omnicar_ignition.xacro" />
+    <xacro:include filename="$(find mulinex_description)/urdf/imu_sensor.xacro" />
+    <xacro:include filename="$(find mulinex_description)/urdf/lidar_sensor.xacro" />
+    <xacro:include filename="$(find mulinex_description)/urdf/camera_sensor.xacro" />
 
     <xacro:arg name="use_gazebo" default="true" />
-    <xacro:arg name="use_ignition" default="true" />
+    <xacro:arg name="yaml_file" default=""/>
+    <xacro:arg name="lidar_3D" default="true"/>
 
-    <xacro:arg name="simplify_meshes_lower_leg" default="true"/>
 
     <xacro:arg name="jnt_prefix" default=""/>
-    <!-- use "normal" if normal feet are used
-        use "omni" if omniwheels are used
-        use "goat" if goat feet are used 
-        use "track" if track feet are used -->
+
     
     <xacro:arg name="front_haa" default="0.0" />
     <xacro:arg name="hind_haa" default="0.0" />
 
-    <xacro:arg name="RH_HFE" default="0.0" />
-    <xacro:arg name="RH_KFE" default="0.0" />
-    <xacro:arg name="RF_HFE" default="0.0" />
-    <xacro:arg name="RF_KFE" default="0.0" />
-
-    <xacro:arg name="LH_HFE" default="0.0" />
-    <xacro:arg name="LH_KFE" default="0.0" />
-    <xacro:arg name="LF_HFE" default="0.0" />
-    <xacro:arg name="LF_KFE" default="0.0" />
 
     <link name="$(arg jnt_prefix)base_link">
         <visual>
-            <material name="white" />
+            <material name="black"/>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
                 <mesh filename="${mulinex_base}" />
@@ -59,38 +49,34 @@
         prefix="LH"
         gazebo="$(arg use_gazebo)"
         jnt_pref="$(arg jnt_prefix)"
-        simplify_meshes="$(arg simplify_meshes_lower_leg)" 
+        simplify_meshes="true" 
         />
     <xacro:omni_mod
         prefix="LF"
         gazebo="$(arg use_gazebo)"
         jnt_pref="$(arg jnt_prefix)"
-        simplify_meshes="$(arg simplify_meshes_lower_leg)"
+        simplify_meshes="true"
         />
     <xacro:omni_mod
         prefix="RF"
         gazebo="$(arg use_gazebo)"
         jnt_pref="$(arg jnt_prefix)"
-        simplify_meshes="$(arg simplify_meshes_lower_leg)"
+        simplify_meshes="true"
         />
     <xacro:omni_mod
         prefix="RH"
         gazebo="$(arg use_gazebo)"
         jnt_pref="$(arg jnt_prefix)"
-        simplify_meshes="$(arg simplify_meshes_lower_leg)"
+        simplify_meshes="true"
+    />
+    <xacro:imu_sensor/>
+    <xacro:lidar_sensor tredi="$(arg lidar_3D)"/>
+    <xacro:camera_sensor/>
+
+    <xacro:omnicar_ign_hw 
+        gazebo="$(arg use_gazebo)"
+        yaml="$(arg yaml_file)"    
     />
 
-    <xacro:if value="$(arg use_gazebo)">
-        <xacro:if value="$(arg use_ignition)">
-        
-            <xacro:omnicar_ign_hw
-                gazebo="$(arg use_ignition)"
-            />
-        </xacro:if>
-        <xacro:unless value="$(arg use_ignition)">
-        
-
-        </xacro:unless>
-
-    </xacro:if>
+    
 </robot>

@@ -2,12 +2,8 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-    <xacro:include filename="$(find mulinex_description)/urdf/material.xacro" />
-
-    <xacro:macro name="omnicar_ign_hw" params="gazebo ">
-        <gazebo reference="base_link">
-            <material>Gazebo/White</material>
-        </gazebo>
+    <xacro:macro name="omnicar_ign_hw" params="gazebo yaml">
+        
         
         <ros2_control name="GazeboSystem" type="system">
             <hardware>
@@ -63,6 +59,7 @@
             <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
                 <parameters>$(find mulinex_ignition)/config/omnicar.yaml</parameters>
             </plugin>
+            
         </gazebo>
     </xacro:macro>
 </robot>
