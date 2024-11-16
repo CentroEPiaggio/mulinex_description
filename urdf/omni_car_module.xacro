@@ -2,7 +2,7 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-    <xacro:include filename="$(find mulinex_description)/urdf/links.xacro" />
+    <xacro:include filename="$(find mulinex_description)/urdf/hip_module.xacro" />
     <xacro:include filename="$(find mulinex_description)/urdf/wheel.xacro" />
     <xacro:property name="PI" value="3.141592" />
 
@@ -19,7 +19,6 @@
             prefix="${prefix}"
             gazebo="${gazebo}"
         />
-        <!-- Lower leg link -->
         
     </xacro:macro>
 
