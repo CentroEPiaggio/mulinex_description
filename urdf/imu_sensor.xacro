@@ -48,8 +48,8 @@
                     <update_rate>100</update_rate>
                     <visualize>true</visualize>
                     <topic>imu</topic>
-                    <plugin filename="gz-sim-imu-system"
-                            name="gz::sim::systems::Imu">
+                    <plugin filename="libignition-gazebo-imu-system.so"
+                            name="ignition::gazebo::systems::Imu">
                     </plugin>
                     
                     <imu>
