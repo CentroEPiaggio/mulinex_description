@@ -42,8 +42,21 @@
             
         </link>
         <gazebo reference="lidar_link">
+            <!-- <sensor name="RGLsensor" type="custom">
+                <plugin filename="RGLServerPluginInstance" name="rgl::RGLServerPluginInstance">
+                    <range>
+                    <min>0</min>
+                    <max>100</max>
+                    </range>
+                    <update_rate>10</update_rate>
+                    <update_on_paused_sim>false</update_on_paused_sim>
+                    <topic>rgl_lidar</topic>
+                    <frame>lidar_link</frame>
+                    <pattern_preset>Puck</pattern_preset>
+                </plugin>
+            </sensor> -->
             <sensor name="lidar" type="gpu_lidar">
-                <gz_frame_id>lidar_link</gz_frame_id>
+                <ignition_frame_id>lidar_link</ignition_frame_id>
                 <topic>lidar</topic>
                 <always_on>true</always_on>
                 <visualize>true</visualize>
@@ -70,8 +83,8 @@
                             </vertical>
                         </scan>
                     <range>
-                        <min>0.120000</min>
-                        <max>3.5</max>
+                        <min>0.1</min>
+                        <max>100.0</max>
                         <resolution>0.015000</resolution>
                     </range>
                     <noise>
