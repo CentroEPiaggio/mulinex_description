@@ -55,7 +55,7 @@
             <odom_frame>gt_odom</odom_frame>
             <robot_base_frame>base_link</robot_base_frame>
             <odom_topic>gt_odom</odom_topic>
-            <tf_topic>gt_pose</tf_topic>
+            <tf_topic>gt_pose_gazebo</tf_topic>
         </plugin>
         <!-- <plugin
             filename="libignition-gazebo6-pose-publisher-system"

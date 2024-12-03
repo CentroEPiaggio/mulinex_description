@@ -42,7 +42,7 @@
             
         </link>
         <gazebo reference="lidar_link">
-            <!-- <sensor name="RGLsensor" type="custom">
+            <sensor name="RGLsensor" type="custom">
                 <plugin filename="RGLServerPluginInstance" name="rgl::RGLServerPluginInstance">
                     <range>
                     <min>0</min>
@@ -52,10 +52,10 @@
                     <update_on_paused_sim>false</update_on_paused_sim>
                     <topic>rgl_lidar</topic>
                     <frame>lidar_link</frame>
-                    <pattern_preset>Puck</pattern_preset>
+                    <pattern_preset>Alpha Prime</pattern_preset>
                 </plugin>
-            </sensor> -->
-            <sensor name="lidar" type="gpu_lidar">
+            </sensor>
+            <!-- <sensor name="lidar" type="gpu_lidar">
                 <ignition_frame_id>lidar_link</ignition_frame_id>
                 <topic>lidar</topic>
                 <always_on>true</always_on>
@@ -116,7 +116,7 @@
                     </noise>
                 </ray>
                 </xacro:unless>
-            </sensor>
+            </sensor> -->
         </gazebo>
         
     </xacro:macro>
