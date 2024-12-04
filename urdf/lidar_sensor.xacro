@@ -16,7 +16,7 @@
     <xacro:property name="lidar_len_h" value="0.055" />
     <xacro:include filename="$(find mulinex_description)/urdf/base_inertia.xacro" />
     
-    <xacro:macro name="lidar_sensor" params="tredi">
+    <xacro:macro name="lidar_sensor" params="tredi namespace">
         <joint name="base2lidar" type="fixed">
             <parent link="base_link"/>
             <child link="lidar_link"/>
@@ -50,7 +50,7 @@
                     </range>
                     <update_rate>10</update_rate>
                     <update_on_paused_sim>false</update_on_paused_sim>
-                    <topic>rgl_lidar</topic>
+                    <topic>${namespace}/rgl_lidar</topic>
                     <frame>lidar_link</frame>
                     <pattern_preset>Alpha Prime</pattern_preset>
                 </plugin>

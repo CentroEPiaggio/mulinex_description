@@ -12,7 +12,7 @@
     <xacro:arg name="use_gazebo" default="true" />
     <xacro:arg name="yaml_file" default=""/>
     <xacro:arg name="lidar_3D" default="true"/>
-
+    <xacro:arg name="omnicar_namespace" default="omnicar"/>
 
     <xacro:arg name="jnt_prefix" default=""/>
 
@@ -52,10 +52,10 @@
             name="ignition::gazebo::systems::OdometryPublisher">
             <dimensions>3</dimensions>
             <odom_publish_frequency>100</odom_publish_frequency>
-            <odom_frame>gt_odom</odom_frame>
-            <robot_base_frame>base_link</robot_base_frame>
-            <odom_topic>gt_odom</odom_topic>
-            <tf_topic>gt_pose_gazebo</tf_topic>
+            <odom_frame>$(arg omnicar_namespace)/gt_odom</odom_frame>
+            <robot_base_frame>$(arg omnicar_namespace)/base_link</robot_base_frame>
+            <odom_topic>$(arg omnicar_namespace)/gt_odom</odom_topic>
+            <tf_topic>$(arg omnicar_namespace)/gt_pose_gazebo</tf_topic>
         </plugin>
         <!-- <plugin
             filename="libignition-gazebo6-pose-publisher-system"
@@ -96,9 +96,9 @@
         jnt_pref="$(arg jnt_prefix)"
         simplify_meshes="true"
     />
-    <xacro:imu_sensor/>
-    <xacro:lidar_sensor tredi="$(arg lidar_3D)"/>
-    <xacro:camera_sensor/>
+    <xacro:imu_sensor namespace="$(arg omnicar_namespace)"/>
+    <xacro:lidar_sensor tredi="$(arg lidar_3D)" namespace="$(arg omnicar_namespace)"/>
+    <!-- <xacro:camera_sensor namespace="$(arg omnicar_namespace)"/> -->
 
     <xacro:omnicar_ign_hw 
         gazebo="$(arg use_gazebo)"
