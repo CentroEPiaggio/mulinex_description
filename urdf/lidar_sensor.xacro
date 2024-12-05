@@ -51,8 +51,8 @@
                     <update_rate>10</update_rate>
                     <update_on_paused_sim>false</update_on_paused_sim>
                     <topic>${namespace}/rgl_lidar</topic>
-                    <frame>lidar_link</frame>
-                    <pattern_preset>Alpha Prime</pattern_preset>
+                    <frame>${namespace}/lidar_link</frame>
+                    <pattern_preset>Puck</pattern_preset>
                 </plugin>
             </sensor>
             <!-- <sensor name="lidar" type="gpu_lidar">
