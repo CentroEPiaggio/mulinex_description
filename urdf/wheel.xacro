@@ -22,10 +22,7 @@
     <xacro:property name="HAA_2_HFE_x" value="${190.0 * 0.001}" />
     <xacro:property name="HAA_2_HFE_y" value="${25.0 * 0.001}" />
 
-        <!-- Transformation based on the position of each link -->
-       
-    
-
+    <!-- Transformation based on the position of each link -->
     
     <xacro:macro name="wheel" params="prefix gazebo">
         <joint name="${prefix}_WHEEL_JNT" type="continuous">

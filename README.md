@@ -1,20 +1,38 @@
-# mulinex_robot_description
+# Mulinex Robots Description
 
-## Overview
-This package contains a simplified robot description (URDF) of the Mulinex robot.
-The shanks collisions can be changed. You can use both real meshes or simplified ones.
+ROS2 package with URDF descriptions for the Mulinex robot family.
+
+## Robots
+
+### Mulinex (`urdf/mulinex.xacro`) — Quadruped
+
+| Parameter | Values | Default | Description |
+|---|---|---|---|
+| `feet_type` | `normal`, `omni`, `goat`, `track` | `omni` | Foot type (Otto, OmniQuad, GoatQuad, track) |
+| `simplify_meshes_lower_leg` | `true`, `false` | `true` | Use convex-hull collision meshes for shanks |
+| `use_gazebo` | `true`, `false` | `true` | Include Gazebo plugins and ros2_control |
+| `jnt_prefix` | string | `""` | Prefix for all joint/link names |
+| `{LF,LH,RF,RH}_{HFE,KFE}` | float (rad) | `0.0` | Initial joint positions |
+
+### OmniCar (`urdf/omnicar.xacro`) — Wheeled (mecanum)
+
+| Parameter | Values | Default | Description |
+|---|---|---|---|
+| `use_gazebo` | `true`, `false` | `true` | Include Ignition Gazebo plugins and ros2_control |
+| `yaml_file` | path | `""` | Controller config YAML (from `mulinex_ignition`) |
+| `lidar_3D` | `true`, `false` | `true` | 3D LiDAR (900x15 rays) vs 2D (360 rays) |
+| `jnt_prefix` | string | `""` | Prefix for all joint/link names |
+
+Sensors: IMU (100 Hz), LiDAR (50 Hz), RGBD camera (30 Hz, 320x240).
 
 ## Usage
-Compile and source the workspace with
-```shell
-colcon build --symlink-install && . install/setup.bash
-```
 
-To visualize and debug the robot description, start the standalone visualization (note that you have to provide the following additional dependencies: `joint_state_publisher`, `joint_state_publisher_gui`, `robot_state_publisher`, `rviz2`, `xacro`):
+Visualize in RViz
 ```shell
 ros2 launch mulinex_description display_mulinex.launch.py
 ```
-In the `mulinex.xacro` file there is a flag called `feet_type`, which is devoted to choose the feet type of the robot. One can choose between several options by simply writing the name in the field: 
-`normal`: use the robot with normal feet; 
-`omni`: use the robot with omniwheels;
-`goat`: use the robot with goat feet. 
+
+Simulate in Gazebo
+```
+ros2 launch mulinex_description gazebo_mulinex.launch.py
+```
