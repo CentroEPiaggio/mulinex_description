@@ -5,7 +5,7 @@
     <xacro:include filename="$(find mulinex_description)/urdf/leg.xacro" />
     <xacro:include filename="$(find mulinex_description)/urdf/material.xacro" />
    
-    <xacro:arg name="use_gazebo" default="true" />
+    <xacro:arg name="use_gazebo" default="false" />
 
     <xacro:arg name="simplify_meshes_lower_leg" default="true"/>
 

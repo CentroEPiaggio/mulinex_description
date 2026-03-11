@@ -9,7 +9,7 @@
     <xacro:include filename="$(find mulinex_description)/urdf/lidar_sensor.xacro" />
     <xacro:include filename="$(find mulinex_description)/urdf/camera_sensor.xacro" />
 
-    <xacro:arg name="use_gazebo" default="true" />
+    <xacro:arg name="use_gazebo" default="false" />
     <xacro:arg name="yaml_file" default=""/>
     <xacro:arg name="lidar_3D" default="true"/>
 
