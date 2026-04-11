@@ -292,29 +292,29 @@
     </xacro:macro>
 
     <!-- UPPER LEG -->
-    <xacro:macro name="upper_leg" params="prefix gazebo jnt_pref simplify_meshes">
+    <xacro:macro name="upper_leg" params="prefix gazebo jnt_pref simplify_meshes hfe_offset:=0">
         <!-- Transformation based on the position of each link -->
         <xacro:if value="${prefix == 'LF'}">
             <xacro:property name="hip_to_upper_leg_xyz" value="${HAA_2_HFE_x} ${HAA_2_HFE_y} 0" />
-            <xacro:property name="hip_to_upper_leg_rpy" value="0 0 0" />
+            <xacro:property name="hip_to_upper_leg_rpy" value="0 ${hfe_offset} 0" />
             <xacro:property name="axis" value="0 1 0" />
         </xacro:if>
         <xacro:if
             value="${prefix == 'LH'}">
             <xacro:property name="hip_to_upper_leg_xyz" value="${-HAA_2_HFE_x} ${HAA_2_HFE_y} 0" />
-            <xacro:property name="hip_to_upper_leg_rpy" value="0 0 0" />
+            <xacro:property name="hip_to_upper_leg_rpy" value="0 ${hfe_offset} 0" />
             <xacro:property name="axis" value="0 1 0" />
         </xacro:if>
         <xacro:if
             value="${prefix == 'RF'}">
             <xacro:property name="hip_to_upper_leg_xyz" value="${HAA_2_HFE_x} ${-HAA_2_HFE_y} 0" />
-            <xacro:property name="hip_to_upper_leg_rpy" value="0 0 0" />
+            <xacro:property name="hip_to_upper_leg_rpy" value="0 ${-hfe_offset} 0" />
             <xacro:property name="axis" value="0 -1 0" />
         </xacro:if>
         <xacro:if
             value="${prefix == 'RH'}">
             <xacro:property name="hip_to_upper_leg_xyz" value="${-HAA_2_HFE_x} ${-HAA_2_HFE_y} 0" />
-            <xacro:property name="hip_to_upper_leg_rpy" value="0 0 0" />
+            <xacro:property name="hip_to_upper_leg_rpy" value="0 ${-hfe_offset} 0" />
             <xacro:property name="axis" value="0 -1 0" />
         </xacro:if>
         <!-- <xacro:property name="upper_to_lower_leg_rpy" value="0 0 0" /> -->
@@ -476,35 +476,37 @@
     </xacro:macro>
 
     <!-- LOWER LEG -->
-    <xacro:macro name="lower_leg" params="prefix gazebo jnt_pref simplify_meshes feet_type">
+    <xacro:macro name="lower_leg" params="prefix gazebo jnt_pref simplify_meshes feet_type kfe_offset:=0">
         <!-- NORMAL FEET CONFIGURATION -->
         <xacro:if value="${feet_type == 'normal'}">
             <!-- Transformation based on the position of each link -->
             <xacro:if value="${prefix == 'LF'}">
                 <xacro:property name="upper_to_lower_leg_xyz"
                     value="${HFE_2_KFE_x} ${HFE_2_KFE_y} 0" />
+                <xacro:property name="upper_to_lower_leg_rpy" value="0 ${kfe_offset} 0" />
                 <xacro:property name="axis" value="0 1 0" />
             </xacro:if>
             <xacro:if
                 value="${prefix == 'LH'}">
                 <xacro:property name="upper_to_lower_leg_xyz"
                     value="${-HFE_2_KFE_x} ${HFE_2_KFE_y} 0" />
+                <xacro:property name="upper_to_lower_leg_rpy" value="0 ${kfe_offset} 0" />
                 <xacro:property name="axis" value="0 1 0" />
             </xacro:if>
             <xacro:if
                 value="${prefix == 'RF'}">
                 <xacro:property name="upper_to_lower_leg_xyz"
                     value="${HFE_2_KFE_x} ${-HFE_2_KFE_y} 0" />
+                <xacro:property name="upper_to_lower_leg_rpy" value="0 ${-kfe_offset} 0" />
                 <xacro:property name="axis" value="0 -1 0" />
             </xacro:if>
             <xacro:if
                 value="${prefix == 'RH'}">
                 <xacro:property name="upper_to_lower_leg_xyz"
                     value="${-HFE_2_KFE_x} ${-HFE_2_KFE_y} 0" />
+                <xacro:property name="upper_to_lower_leg_rpy" value="0 ${-kfe_offset} 0" />
                 <xacro:property name="axis" value="0 -1 0" />
             </xacro:if>
-
-            <xacro:property name="upper_to_lower_leg_rpy" value="0 0 0" />
 
             <!-- Knee joint -->
             <joint name="${prefix}_KFE" type="revolute">
@@ -752,28 +754,30 @@
             <xacro:if value="${prefix == 'LF'}">
                 <xacro:property name="upper_to_lower_leg_xyz"
                     value="${HFE_2_KFE_x} ${HFE_2_KFE_y} 0" />
+                <xacro:property name="upper_to_lower_leg_rpy" value="0 ${kfe_offset} 0" />
                 <xacro:property name="axis" value="0 1 0" />
             </xacro:if>
             <xacro:if
                 value="${prefix == 'LH'}">
                 <xacro:property name="upper_to_lower_leg_xyz"
                     value="${-HFE_2_KFE_x} ${HFE_2_KFE_y} 0" />
+                <xacro:property name="upper_to_lower_leg_rpy" value="0 ${kfe_offset} 0" />
                 <xacro:property name="axis" value="0 1 0" />
             </xacro:if>
             <xacro:if
                 value="${prefix == 'RF'}">
                 <xacro:property name="upper_to_lower_leg_xyz"
                     value="${HFE_2_KFE_x} ${-HFE_2_KFE_y} 0" />
+                <xacro:property name="upper_to_lower_leg_rpy" value="0 ${-kfe_offset} 0" />
                 <xacro:property name="axis" value="0 -1 0" />
             </xacro:if>
             <xacro:if
                 value="${prefix == 'RH'}">
                 <xacro:property name="upper_to_lower_leg_xyz"
                     value="${-HFE_2_KFE_x} ${-HFE_2_KFE_y} 0" />
+                <xacro:property name="upper_to_lower_leg_rpy" value="0 ${-kfe_offset} 0" />
                 <xacro:property name="axis" value="0 -1 0" />
             </xacro:if>
-
-            <xacro:property name="upper_to_lower_leg_rpy" value="0 0 0" />
 
             <!-- Knee joint -->
             <joint name="${prefix}_KFE" type="revolute">
@@ -3126,28 +3130,30 @@
             <xacro:if value="${prefix == 'LF'}">
                 <xacro:property name="upper_to_lower_leg_xyz"
                     value="${HFE_2_KFE_x} ${HFE_2_KFE_y} 0" />
+                <xacro:property name="upper_to_lower_leg_rpy" value="0 ${kfe_offset} 0" />
                 <xacro:property name="axis" value="0 1 0" />
             </xacro:if>
             <xacro:if
                 value="${prefix == 'LH'}">
                 <xacro:property name="upper_to_lower_leg_xyz"
                     value="${-HFE_2_KFE_x} ${HFE_2_KFE_y} 0" />
+                <xacro:property name="upper_to_lower_leg_rpy" value="0 ${kfe_offset} 0" />
                 <xacro:property name="axis" value="0 1 0" />
             </xacro:if>
             <xacro:if
                 value="${prefix == 'RF'}">
                 <xacro:property name="upper_to_lower_leg_xyz"
                     value="${HFE_2_KFE_x} ${-HFE_2_KFE_y} 0" />
+                <xacro:property name="upper_to_lower_leg_rpy" value="0 ${-kfe_offset} 0" />
                 <xacro:property name="axis" value="0 -1 0" />
             </xacro:if>
             <xacro:if
                 value="${prefix == 'RH'}">
                 <xacro:property name="upper_to_lower_leg_xyz"
                     value="${-HFE_2_KFE_x} ${-HFE_2_KFE_y} 0" />
+                <xacro:property name="upper_to_lower_leg_rpy" value="0 ${-kfe_offset} 0" />
                 <xacro:property name="axis" value="0 -1 0" />
             </xacro:if>
-
-            <xacro:property name="upper_to_lower_leg_rpy" value="0 0 0" />
 
             <!-- Knee joint -->
             <joint name="${prefix}_KFE" type="revolute">
@@ -3572,28 +3578,30 @@
             <xacro:if value="${prefix == 'LF'}">
                 <xacro:property name="upper_to_lower_leg_xyz"
                     value="${HFE_2_KFE_x} ${HFE_2_KFE_y} 0" />
+                <xacro:property name="upper_to_lower_leg_rpy" value="0 ${kfe_offset} 0" />
                 <xacro:property name="axis" value="0 1 0" />
             </xacro:if>
             <xacro:if
                 value="${prefix == 'LH'}">
                 <xacro:property name="upper_to_lower_leg_xyz"
                     value="${-HFE_2_KFE_x} ${HFE_2_KFE_y} 0" />
+                <xacro:property name="upper_to_lower_leg_rpy" value="0 ${kfe_offset} 0" />
                 <xacro:property name="axis" value="0 1 0" />
             </xacro:if>
             <xacro:if
                 value="${prefix == 'RF'}">
                 <xacro:property name="upper_to_lower_leg_xyz"
                     value="${HFE_2_KFE_x} ${-HFE_2_KFE_y} 0" />
+                <xacro:property name="upper_to_lower_leg_rpy" value="0 ${-kfe_offset} 0" />
                 <xacro:property name="axis" value="0 -1 0" />
             </xacro:if>
             <xacro:if
                 value="${prefix == 'RH'}">
                 <xacro:property name="upper_to_lower_leg_xyz"
                     value="${-HFE_2_KFE_x} ${-HFE_2_KFE_y} 0" />
+                <xacro:property name="upper_to_lower_leg_rpy" value="0 ${-kfe_offset} 0" />
                 <xacro:property name="axis" value="0 -1 0" />
             </xacro:if>
-
-            <xacro:property name="upper_to_lower_leg_rpy" value="0 0 0" />
 
             <!-- Knee joint -->
             <joint name="${prefix}_KFE" type="revolute">

@@ -14,6 +14,10 @@ ROS2 package with URDF descriptions for the Mulinex robot family.
 | `jnt_prefix` | string | `""` | Prefix for all joint/link names |
 | `{LF,LH,RF,RH}_{HFE,KFE}` | float (rad) | `0.0` | Initial joint positions |
 
+### Mulinex White (`urdf/mulinex_white.xacro`) — New Quadruped
+
+Placeholder! Has the correct initial configuration but the body is not yet updated to the new design.
+
 ### OmniCar (`urdf/omnicar.xacro`) — Wheeled (mecanum)
 
 | Parameter | Values | Default | Description |

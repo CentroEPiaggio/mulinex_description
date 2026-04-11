@@ -5,7 +5,7 @@
     <xacro:include filename="$(find mulinex_description)/urdf/links.xacro" />
     <xacro:property name="PI" value="3.141592" />
 
-    <xacro:macro name="leg" params="prefix gazebo jnt_pref simplify_meshes feet_type">
+    <xacro:macro name="leg" params="prefix gazebo jnt_pref simplify_meshes feet_type hfe_offset:=0 kfe_offset:=0">
         <!-- Module 1 -->
         <xacro:hip
             prefix="${prefix}"
@@ -19,6 +19,7 @@
             gazebo="${gazebo}"
             jnt_pref="${jnt_pref}"
             simplify_meshes="${simplify_meshes}"
+            hfe_offset="${hfe_offset}"
         />
         <!-- Lower leg link -->
         <xacro:lower_leg
@@ -26,7 +27,8 @@
             gazebo="${gazebo}"
             jnt_pref="${jnt_pref}"
             simplify_meshes="${simplify_meshes}"
-            feet_type="$(arg feet_type)" 
+            feet_type="$(arg feet_type)"
+            kfe_offset="${kfe_offset}"
         />
     </xacro:macro>
 
