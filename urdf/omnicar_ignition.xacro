@@ -5,9 +5,9 @@
     <xacro:macro name="omnicar_ign_hw" params="gazebo yaml">
         
         
-        <ros2_control name="GazeboSystem" type="system">
+        <ros2_control name="IgnitionSystem" type="system">
             <hardware>
-                <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+                <plugin>ign_ros2_control/IgnitionSystem</plugin>
             </hardware>
             <joint name="LH_WHEEL_JNT">
                 <command_interface name="velocity" />
@@ -56,7 +56,7 @@
         
         
         <gazebo>
-            <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+            <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
                 <parameters>$(find mulinex_ignition)/config/omnicar.yaml</parameters>
             </plugin>
             

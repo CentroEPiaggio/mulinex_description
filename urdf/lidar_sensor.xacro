@@ -16,7 +16,7 @@
     <xacro:property name="lidar_len_h" value="0.055" />
     <xacro:include filename="$(find mulinex_description)/urdf/base_inertia.xacro" />
     
-    <xacro:macro name="lidar_sensor" params="tredi">
+    <xacro:macro name="lidar_sensor" params="tredi namespace">
         <joint name="base2lidar" type="fixed">
             <parent link="base_link"/>
             <child link="lidar_link"/>
@@ -42,15 +42,28 @@
             
         </link>
         <gazebo reference="lidar_link">
-            <sensor name="lidar" type="gpu_lidar">
-                <gz_frame_id>lidar_link</gz_frame_id>
+            <sensor name="RGLsensor" type="custom">
+                <plugin filename="RGLServerPluginInstance" name="rgl::RGLServerPluginInstance">
+                    <range>
+                    <min>0</min>
+                    <max>100</max>
+                    </range>
+                    <update_rate>10</update_rate>
+                    <update_on_paused_sim>false</update_on_paused_sim>
+                    <topic>${namespace}/rgl_lidar</topic>
+                    <frame>${namespace}/lidar_link</frame>
+                    <pattern_preset>Puck</pattern_preset>
+                </plugin>
+            </sensor>
+            <!-- <sensor name="lidar" type="gpu_lidar">
+                <ignition_frame_id>lidar_link</ignition_frame_id>
                 <topic>lidar</topic>
                 <always_on>true</always_on>
                 <visualize>true</visualize>
                 <update_rate>50</update_rate>
                 <plugin
-                    filename="gz-sim-sensors-system"
-                    name="gz::sim::systems::Sensors">
+                    filename="libignition-gazebo-sensors-system.so"
+                    name="ignition::gazebo::systems::Sensors">
                     <render_engine>ogre2</render_engine>
                 </plugin>
                 <xacro:if value="${tredi}">
@@ -70,8 +83,8 @@
                             </vertical>
                         </scan>
                     <range>
-                        <min>0.120000</min>
-                        <max>3.5</max>
+                        <min>0.1</min>
+                        <max>100.0</max>
                         <resolution>0.015000</resolution>
                     </range>
                     <noise>
@@ -103,7 +116,7 @@
                     </noise>
                 </ray>
                 </xacro:unless>
-            </sensor>
+            </sensor> -->
         </gazebo>
         
     </xacro:macro>
