@@ -15,10 +15,10 @@
         use "track" if track feet are used -->
     <xacro:arg name="feet_type" default="omni"/>
 
-
     <xacro:arg name="jnt_prefix" default="" />
-    <xacro:arg name="front_haa" default="0.0" />
-    <xacro:arg name="hind_haa" default="0.0" />
+
+    <xacro:property name="HFE" value="0.74" />
+    <xacro:property name="KFE" value="0.8" />
 
     <xacro:arg name="RH_HFE" default="0.0" />
     <xacro:arg name="RH_KFE" default="0.0" />
@@ -62,8 +62,8 @@
         jnt_pref="$(arg jnt_prefix)"
         simplify_meshes="$(arg simplify_meshes_lower_leg)"
         feet_type="$(arg feet_type)"
-        hfe_offset="${PI}"
-        kfe_offset="${PI}"
+        hfe_offset="${PI + HFE}"
+        kfe_offset="${PI - KFE}"
         />
     <xacro:leg
         prefix="LF"
@@ -71,8 +71,8 @@
         jnt_pref="$(arg jnt_prefix)"
         simplify_meshes="$(arg simplify_meshes_lower_leg)"
         feet_type="$(arg feet_type)"
-        hfe_offset="${PI}"
-        kfe_offset="${PI}"
+        hfe_offset="${PI - HFE}"
+        kfe_offset="${PI + KFE}"
         />
     <xacro:leg
         prefix="RF"
@@ -80,8 +80,8 @@
         jnt_pref="$(arg jnt_prefix)"
         simplify_meshes="$(arg simplify_meshes_lower_leg)"
         feet_type="$(arg feet_type)"
-        hfe_offset="${PI}"
-        kfe_offset="${PI}"
+        hfe_offset="${PI + HFE}"
+        kfe_offset="${PI - KFE}"
         />
     <xacro:leg
         prefix="RH"
@@ -89,8 +89,8 @@
         jnt_pref="$(arg jnt_prefix)"
         simplify_meshes="$(arg simplify_meshes_lower_leg)"
         feet_type="$(arg feet_type)"
-        hfe_offset="${PI}"
-        kfe_offset="${PI}"
+        hfe_offset="${PI - HFE}"
+        kfe_offset="${PI + KFE}"
         />
 
     <xacro:if value="$(arg use_gazebo)">
