@@ -6,6 +6,7 @@
     <xacro:include filename="$(find mulinex_description)/urdf/material.xacro" />
    
     <xacro:arg name="use_gazebo" default="false" />
+    <xacro:arg name="yaml_file" default="" />
 
     <xacro:arg name="simplify_meshes_lower_leg" default="true"/>
 
@@ -89,7 +90,7 @@
         </gazebo>
         <gazebo>
             <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-                <parameters>$(find mulinex_ignition)/config/mulinex_mf.yaml</parameters>
+                <parameters>$(arg yaml_file)</parameters>
             </plugin>
         </gazebo>
 
@@ -108,8 +109,7 @@
                 <state_interface name="effort" />
             </joint> -->
             <joint name="LH_HFE">
-                <command_interface name="position" />
-                
+                <command_interface name="effort" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg LH_HFE)</param>
                 </state_interface>
@@ -119,7 +119,7 @@
                 <state_interface name="effort" />
             </joint>
             <joint name="LH_KFE">
-                <command_interface name="position" />
+                <command_interface name="effort" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg LH_KFE)</param>
                 </state_interface>
@@ -139,7 +139,7 @@
                 <state_interface name="effort" />
             </joint> -->
             <joint name="LF_HFE">
-                <command_interface name="position" />
+                <command_interface name="effort" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg LF_HFE)</param>
                 </state_interface>
@@ -149,7 +149,7 @@
                 <state_interface name="effort" />
             </joint>
             <joint name="LF_KFE">
-                <command_interface name="position" />
+                <command_interface name="effort" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg LF_KFE)</param>
                 </state_interface>
@@ -169,7 +169,7 @@
                 <state_interface name="effort" />
             </joint> -->
             <joint name="RH_HFE">
-                <command_interface name="position" />
+                <command_interface name="effort" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg RH_HFE)</param>
                 </state_interface>
@@ -179,7 +179,7 @@
                 <state_interface name="effort" />
             </joint>
             <joint name="RH_KFE">
-                <command_interface name="position" />
+                <command_interface name="effort" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg RH_KFE)</param>
                 </state_interface>
@@ -199,7 +199,7 @@
                 <state_interface name="effort" />
             </joint> -->
             <joint name="RF_HFE">
-                <command_interface name="position" />
+                <command_interface name="effort" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg RF_HFE)</param>
                 </state_interface>
@@ -209,7 +209,7 @@
                 <state_interface name="effort" />
             </joint>
             <joint name="RF_KFE">
-                <command_interface name="position" />
+                <command_interface name="effort" />
                 <state_interface name="position">
                     <param name="initial_value">$(arg RF_KFE)</param>
                 </state_interface>

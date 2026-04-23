@@ -964,11 +964,11 @@
                 </xacro:if>
                 <xacro:if value="${prefix == 'RF'}">
                     <origin xyz="${KFE_2_FOOT_x} -0.01145 0" rpy="0 0 0" />
-                    <axis xyz="0 1 0" />
+                    <axis xyz="0 -1 0" />
                 </xacro:if>
                 <xacro:if value="${prefix == 'RH'}">
                     <origin xyz="${-KFE_2_FOOT_x} -0.01145 0" rpy="0 0 0" />
-                    <axis xyz="0 1 0" />
+                    <axis xyz="0 -1 0" />
                 </xacro:if>
             </joint>
 

@@ -9,7 +9,7 @@
         </gazebo>
         <gazebo>
             <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
-                <parameters>$(find mulinex_gazebo)/config/mulinex_gazebo_sim_jnt_PD_IMU.yaml</parameters>
+                <parameters>$(find omni_gazebo)/config/mulinex_gazebo_sim_jnt_PD_IMU.yaml</parameters>
             </plugin>
         </gazebo>
         <ros2_control name="GazeboSystem" type="system">
