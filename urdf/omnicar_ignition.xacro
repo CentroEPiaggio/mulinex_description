@@ -54,6 +54,13 @@
                 <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
                     <parameters>${yaml}</parameters>
                 </plugin>
+                <plugin filename="ignition-gazebo-odometry-publisher-system"
+                        name="ignition::gazebo::systems::OdometryPublisher">
+                    <odom_frame>world</odom_frame>
+                    <robot_base_frame>base_link</robot_base_frame>
+                    <dimensions>3</dimensions>
+                    <odom_publish_frequency>50</odom_publish_frequency>
+                </plugin>
             </gazebo>
         </xacro:if>
     </xacro:macro>
